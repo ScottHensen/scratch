@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			.box {
+				width: 200px;
+				height: 400px;
+				border: 1px	solid #aaaaaa;
+			}
+		</style>
+		<script>
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+			function drag(ev) {
+				ev.dataTransfer.setData("text", ev.target.id);
+			}
+			function drop(ev) {
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("text");
+				ev.target.appendChild(document.getElementById(data));
+			}
+			// on click, add an input box to newTask
+			//function newTask() {
+			//document.getElementById("newTask")
+			//}
+
+			// function recordDrop... write transition to mongo
+		</script>	
+	</head>
+	<body>
+	<!--
+		<div id="box1" class="box" ondrop="drop(event)"  ondragover="allowDrop(event)"></div>
+		<div id="box2" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<div id="box3" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<div id="box4" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<div id="box5" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	-->
+		<table class="board">
+			<tr>
+				<th>First</th>
+				<th>Second</th>
+				<th>Third</th>
+				<th>Fourth</th>
+				<th>Fifth</th>			
+			</tr>
+			<tr>
+				<td id="box1" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+				<td id="box2" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+				<td id="box3" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+				<td id="box4" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+				<td id="box5" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+			</tr>
+		</table>
+		<br>
+		<!-- make these pure css post-its... input boxes for title/desc -->
+		<img id="1" class="task" src="images/postit-yellow.jpg" alt="post-it note" draggable="true" ondragstart="drag(event)">
+		
+		<img id="newTask" class="task" src="images/postit-yellow.jpg" alt="post-it note" draggable="true" ondragstart="drag(event)" onclick="newTask()">
+		<br>
+
+	</body>
+</html>
